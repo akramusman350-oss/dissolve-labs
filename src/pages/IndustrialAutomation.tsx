@@ -1,6 +1,6 @@
 import { DivisionPage } from '../components/DivisionPage';
 import { industrialAutomation } from '../data/divisions';
-import { IndustrialHeroVisual } from '../components/IndustrialHeroVisual';
+import { IndustrialHeroCanvas } from '../components/IndustrialHeroCanvas';
 
 // Industrial Automation icon (circuit/PLC chip)
 const IndustrialIcon = (
@@ -22,20 +22,18 @@ const IndustrialIcon = (
 function IndustrialHeroBackground() {
   return (
     <div className="absolute inset-0 pointer-events-none z-[1] overflow-hidden">
-      {/* Blueprint grid */}
       <div
-        className="absolute inset-0 opacity-[0.05]"
+        className="absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage:
             'linear-gradient(rgba(245,158,11,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(245,158,11,0.4) 1px, transparent 1px)',
           backgroundSize: '48px 48px',
         }}
       />
-      {/* Amber ambient glow */}
       <div
-        className="absolute top-[-15%] right-[5%] w-[55%] h-[70%] rounded-full opacity-25"
+        className="absolute top-[-15%] right-[5%] w-[55%] h-[70%] rounded-full opacity-20"
         style={{
-          background: 'radial-gradient(circle, rgba(245,158,11,0.3) 0%, transparent 65%)',
+          background: 'radial-gradient(circle, rgba(245,158,11,0.25) 0%, transparent 65%)',
           animation: 'indGlow 10s ease-in-out infinite alternate',
         }}
       />
@@ -56,7 +54,7 @@ export function IndustrialAutomationPage() {
     <DivisionPage
       division={division}
       heroBackground={<IndustrialHeroBackground />}
-      heroVisual={<IndustrialHeroVisual />}
+      heroVisual={<IndustrialHeroCanvas />}
     />
   );
 }
