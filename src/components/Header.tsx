@@ -70,10 +70,10 @@ export function Header() {
 
           {/* Right Action & Mobile Toggle */}
           <div className="flex items-center gap-3 sm:gap-4">
-            {/* Desktop / Tablet CTA Button */}
+            {/* Desktop-only CTA Button */}
             <Link
               to="/#contact"
-              className="btn-acid text-xs sm:text-sm py-2.5 px-4 sm:px-6 hidden md:inline-flex"
+              className="btn-acid text-xs sm:text-sm py-2.5 px-6 hidden lg:inline-flex"
               onClick={() => {
                 const el = document.getElementById('contact');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
