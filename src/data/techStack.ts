@@ -1,0 +1,80 @@
+import type { TechGroup } from '../types';
+
+const DI = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons';
+const SI = 'https://cdn.simpleicons.org';
+
+export const techStack: TechGroup[] = [
+  {
+    category: 'Frontend',
+    items: [
+      { name: 'React', icon: `${DI}/react/react-original.svg` },
+      { name: 'Next.js', icon: `${DI}/nextjs/nextjs-original.svg` },
+      { name: 'TypeScript', icon: `${DI}/typescript/typescript-original.svg` },
+      { name: 'Vue.js', icon: `${DI}/vuejs/vuejs-original.svg` },
+      { name: 'Svelte', icon: `${DI}/svelte/svelte-original.svg` },
+      { name: 'Tailwind', icon: `${DI}/tailwindcss/tailwindcss-original.svg` },
+      { name: 'Vite', icon: `${DI}/vitejs/vitejs-original.svg` },
+      { name: 'Flutter', icon: `${DI}/flutter/flutter-original.svg` },
+      { name: 'Astro', icon: `${SI}/astro/000000` },
+      { name: 'Three.js', icon: `${SI}/threedotjs/000000` },
+      { name: 'Angular', icon: `${DI}/angularjs/angularjs-original.svg` },
+      { name: 'React Native', icon: `${DI}/react/react-original.svg` },
+      { name: 'Sass', icon: `${DI}/sass/sass-original.svg` },
+      { name: 'Storybook', icon: `${DI}/storybook/storybook-original.svg` },
+    ],
+  },
+  {
+    category: 'Backend',
+    items: [
+      { name: 'Node.js', icon: `${DI}/nodejs/nodejs-original.svg` },
+      { name: 'Python', icon: `${DI}/python/python-original.svg` },
+      { name: 'Go', icon: `${DI}/go/go-original.svg` },
+      { name: 'Rust', icon: `${DI}/rust/rust-original.svg` },
+      { name: 'Django', icon: `${DI}/django/django-plain.svg` },
+      { name: 'FastAPI', icon: `${DI}/fastapi/fastapi-original.svg` },
+      { name: 'GraphQL', icon: `${DI}/graphql/graphql-plain.svg` },
+      { name: 'NestJS', icon: `${DI}/nestjs/nestjs-original.svg` },
+      { name: 'PostgreSQL', icon: `${DI}/postgresql/postgresql-original.svg` },
+      { name: 'Redis', icon: `${DI}/redis/redis-original.svg` },
+      { name: 'MongoDB', icon: `${DI}/mongodb/mongodb-original.svg` },
+      { name: 'Elixir', icon: `${DI}/elixir/elixir-original.svg` },
+      { name: 'Kafka', icon: `${DI}/apachekafka/apachekafka-original.svg` },
+      { name: 'Supabase', icon: `${DI}/supabase/supabase-original.svg` },
+    ],
+  },
+  {
+    category: 'AI & ML',
+    items: [
+      { name: 'PyTorch', icon: `${DI}/pytorch/pytorch-original.svg` },
+      { name: 'TensorFlow', icon: `${DI}/tensorflow/tensorflow-original.svg` },
+      { name: 'OpenAI', icon: `${SI}/openai/000000` },
+      { name: 'Claude', icon: `${SI}/anthropic/000000` },
+      { name: 'Hugging Face', icon: `${SI}/huggingface/000000` },
+      { name: 'LangChain', icon: `${SI}/langchain/000000` },
+      { name: 'Scikit-learn', icon: `${DI}/scikitlearn/scikitlearn-original.svg` },
+      { name: 'Jupyter', icon: `${DI}/jupyter/jupyter-original.svg` },
+      { name: 'Pandas', icon: `${DI}/pandas/pandas-original.svg` },
+      { name: 'NumPy', icon: `${DI}/numpy/numpy-original.svg` },
+      { name: 'Keras', icon: `${DI}/keras/keras-original.svg` },
+    ],
+  },
+  {
+    category: 'Cloud & DevOps',
+    items: [
+      { name: 'AWS', icon: `${DI}/amazonwebservices/amazonwebservices-plain-wordmark.svg` },
+      { name: 'GCP', icon: `${DI}/googlecloud/googlecloud-original.svg` },
+      { name: 'Docker', icon: `${DI}/docker/docker-original.svg` },
+      { name: 'Kubernetes', icon: `${DI}/kubernetes/kubernetes-original.svg` },
+      { name: 'Terraform', icon: `${DI}/terraform/terraform-original.svg` },
+      { name: 'GitHub', icon: `${DI}/github/github-original.svg` },
+      { name: 'Vercel', icon: `${SI}/vercel/000000` },
+      { name: 'Cloudflare', icon: `${SI}/cloudflare/000000` },
+      { name: 'Grafana', icon: `${DI}/grafana/grafana-original.svg` },
+      { name: 'Nginx', icon: `${DI}/nginx/nginx-original.svg` },
+      { name: 'Ansible', icon: `${DI}/ansible/ansible-original.svg` },
+      { name: 'Prometheus', icon: `${DI}/prometheus/prometheus-original.svg` },
+      { name: 'GitLab CI', icon: `${DI}/gitlab/gitlab-original.svg` },
+      { name: 'Azure', icon: `${DI}/azure/azure-original.svg` },
+    ],
+  },
+];
