@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+/* ── Design Tokens ── */
+@theme {
+  --color-acid: #2563EB;
+  --color-txt: #14170F;
+  --color-bg: #F6F7F3;
+  --color-panel: #EEF3FF;
+  --color-dim: #1E2D4A;
+  --color-faint: #5B6B8A;
+  --color-line: rgba(16, 20, 12, 0.1);
+
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-body: 'Instrument Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* ── Base Reset & Globals ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-txt);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(37, 99, 235, 0.15);
+}
+
+/* ── Container ── */
+.wr {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+@media (max-width: 768px) {
+  .wr {
+    padding: 0 20px;
+  }
+}
+
+/* ── Font Classes ── */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* ── Button: Acid ── */
+.btn-acid {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-acid);
+  color: #fff;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 15px 26px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+  white-space: nowrap;
+}
+
+.btn-acid::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  transform: skewX(-15deg);
+}
+
+.btn-acid:hover {
+  box-shadow: 0 10px 28px rgba(20, 23, 15, 0.22);
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+.btn-acid:hover::after {
+  animation: shine 0.5s ease forwards;
+}
+
+.btn-acid:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* ── Button: Line/Ghost ── */
+.btn-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--color-txt);
+  border: 1px solid var(--color-line);
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 15px 26px;
+  cursor: pointer;
+  transition: border-color 0.18s, color 0.18s, transform 0.18s;
+  white-space: nowrap;
+}
+
+.btn-line:hover {
+  border-color: var(--color-acid);
+  color: var(--color-acid);
+  transform: translateY(-2px);
+}
+
+.btn-line:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.btn-sm {
+  padding: 11px 20px;
+}
+
+/* ── Service Card Chips ── */
+.chip {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.chip-saas { background: #E8EDFC; color: #2E5CE6; }
+.chip-ai   { background: #F1EAFD; color: #7C3AED; }
+.chip-web  { background: #DFF4F0; color: #0D9488; }
+.chip-it   { background: #FCEFDC; color: #D97A06; }
+.chip-ds   { background: #FBE7F1; color: #DB2777; }
+.chip-team { background: #E9EAFB; color: #4F46E5; }
+
+/* ── Form Inputs ── */
+.input-f {
+  width: 100%;
+  border: 1px solid var(--color-line);
+  border-radius: 2px;
+  background: #fff;
+  padding: 13px 16px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--color-txt);
+  outline: none;
+  transition: border-color 0.18s;
+  box-sizing: border-box;
+}
+
+.input-f:focus {
+  border-color: var(--color-acid);
+}
+
+.input-f::placeholder {
+  color: var(--color-faint);
+}
+
+/* ── Keyframes ── */
+@keyframes shine {
+  to {
+    left: 120%;
+  }
+}
+
+@keyframes marq {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes fly {
+  0%, 100% { transform: translate(0, 0) rotate(-8deg); }
+  50% { transform: translate(-14px, -16px) rotate(-4deg); }
+}
+
+@keyframes dash {
+  to { stroke-dashoffset: -44; }
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
