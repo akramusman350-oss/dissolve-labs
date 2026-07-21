@@ -71,16 +71,18 @@ export function Header() {
           {/* Right Action & Mobile Toggle */}
           <div className="flex items-center gap-3 sm:gap-4">
             {/* Desktop-only CTA Button */}
-            <Link
-              to="/#contact"
-              className="btn-acid text-xs sm:text-sm py-2.5 px-6 hidden lg:inline-flex"
-              onClick={() => {
-                const el = document.getElementById('contact');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Start a project →
-            </Link>
+            <div className="hidden lg:block">
+              <Link
+                to="/#contact"
+                className="btn-acid text-xs sm:text-sm py-2.5 px-6"
+                onClick={() => {
+                  const el = document.getElementById('contact');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Start a project →
+              </Link>
+            </div>
 
             {/* Mobile Hamburger Lines Button */}
             <button
