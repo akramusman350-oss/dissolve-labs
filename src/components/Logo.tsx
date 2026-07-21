@@ -1,10 +1,13 @@
-export function Logo({ size = 28 }: { size?: number }) {
+export function Logo({ size = 28, compactOnMobile = false }: { size?: number; compactOnMobile?: boolean }) {
+  const iconSize = compactOnMobile ? 'w-6 h-6 sm:w-7 sm:h-7' : '';
+
   return (
-    <span className="flex items-center gap-3">
+    <span className="flex items-center gap-2.5 sm:gap-3 flex-shrink-0">
       <svg
         width={size}
         height={size}
         viewBox="0 0 60 60"
+        className={iconSize}
         style={{ overflow: 'visible', display: 'block', flexShrink: 0 }}
         aria-hidden="true"
       >
@@ -61,8 +64,8 @@ export function Logo({ size = 28 }: { size?: number }) {
         <circle cx="49.1" cy="10.9" r="0.9" fill="#2563EB" opacity="0.3" />
       </svg>
       <span
-        className="font-display font-bold tracking-tight text-txt"
-        style={{ fontSize: size === 28 ? '19px' : '17px', letterSpacing: '-0.01em' }}
+        className="font-display font-bold tracking-tight text-txt text-base sm:text-lg whitespace-nowrap"
+        style={{ letterSpacing: '-0.01em' }}
       >
         dissolve<span className="text-acid">labs</span>
       </span>

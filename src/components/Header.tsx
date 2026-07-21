@@ -42,19 +42,20 @@ export function Header() {
       <header
         className="sticky top-0 z-50 border-b border-line"
         style={{
-          background: 'rgba(246,247,243,0.92)',
+          background: 'rgba(246,247,243,0.94)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
-          boxShadow: scrolled ? '0 1px 8px rgba(20,23,15,0.06)' : 'none',
+          boxShadow: scrolled ? '0 1px 12px rgba(20,23,15,0.08)' : 'none',
           transition: 'box-shadow 0.3s',
         }}
       >
-        <div className="wr flex items-center justify-between h-[72px]">
-          <Link to="/" aria-label="DissolveLabs home">
-            <Logo />
+        <div className="wr flex items-center justify-between h-[64px] sm:h-[72px]">
+          {/* Logo */}
+          <Link to="/" aria-label="DissolveLabs home" className="flex items-center">
+            <Logo compactOnMobile />
           </Link>
 
-          {/* Desktop Nav */}
+          {/* Desktop Nav Links */}
           <nav className="hidden lg:flex items-center gap-6">
             {NAV_LINKS.map((link) => (
               <NavLink
@@ -67,10 +68,12 @@ export function Header() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-4">
+          {/* Right Action & Mobile Toggle */}
+          <div className="flex items-center gap-3 sm:gap-4">
+            {/* Desktop / Tablet CTA Button */}
             <Link
               to="/#contact"
-              className="btn-acid btn-sm hidden sm:inline-flex"
+              className="btn-acid text-xs sm:text-sm py-2.5 px-4 sm:px-6 hidden md:inline-flex"
               onClick={() => {
                 const el = document.getElementById('contact');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -79,9 +82,9 @@ export function Header() {
               Start a project →
             </Link>
 
-            {/* Mobile Hamburger */}
+            {/* Mobile Hamburger Lines Button */}
             <button
-              className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-[5px] cursor-pointer bg-transparent border-none"
+              className="lg:hidden flex flex-col justify-center items-center w-9 h-9 sm:w-10 sm:h-10 gap-[5px] cursor-pointer bg-transparent border-none p-1"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label={menuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={menuOpen}
@@ -106,7 +109,7 @@ export function Header() {
         </div>
       </header>
 
-      {/* Mobile Nav Panel */}
+      {/* Mobile Nav Slide-in Panel */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -118,12 +121,12 @@ export function Header() {
           >
             {/* Backdrop */}
             <div
-              className="absolute inset-0 bg-black/20"
+              className="absolute inset-0 bg-black/25 backdrop-blur-xs"
               onClick={() => setMenuOpen(false)}
             />
-            {/* Panel */}
+            {/* Sliding Drawer */}
             <motion.nav
-              className="absolute top-[72px] right-0 w-full max-w-sm h-[calc(100vh-72px)] border-l border-line flex flex-col p-8 gap-2 overflow-y-auto"
+              className="absolute top-[64px] sm:top-[72px] right-0 w-full max-w-xs sm:max-w-sm h-[calc(100vh-64px)] sm:h-[calc(100vh-72px)] border-l border-line flex flex-col p-6 sm:p-8 gap-1 overflow-y-auto"
               style={{ background: 'rgba(246,247,243,0.98)', backdropFilter: 'blur(20px)' }}
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
@@ -135,11 +138,11 @@ export function Header() {
                   key={link.label}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.05 + i * 0.04 }}
+                  transition={{ delay: 0.04 + i * 0.03 }}
                 >
                   <a
                     href={link.href}
-                    className="block py-3 text-lg font-medium text-faint hover:text-txt transition-colors"
+                    className="block py-3 text-base sm:text-lg font-medium text-faint hover:text-txt transition-colors"
                     style={{ fontFamily: 'var(--font-body)' }}
                     onClick={(e) => {
                       if (link.href.startsWith('#')) {
@@ -154,10 +157,11 @@ export function Header() {
                   </a>
                 </motion.div>
               ))}
-              <div className="mt-6">
+
+              <div className="mt-8 pt-4 border-t border-line">
                 <Link
                   to="/#contact"
-                  className="btn-acid w-full justify-center"
+                  className="btn-acid w-full justify-center text-xs sm:text-sm py-3"
                   onClick={() => {
                     setMenuOpen(false);
                     setTimeout(() => {
