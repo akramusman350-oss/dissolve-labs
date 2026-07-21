@@ -11,14 +11,19 @@ import { ContactSection } from './ContactSection';
 interface DivisionPageProps {
   division: Division;
   heroBackground?: ReactNode;
+  heroVisual?: ReactNode;
 }
 
-export function DivisionPage({ division, heroBackground }: DivisionPageProps) {
+export function DivisionPage({
+  division,
+  heroBackground,
+  heroVisual,
+}: DivisionPageProps) {
   return (
     <>
       {/* ── Sub-Hero ── */}
-      <section className="relative overflow-hidden bg-bg border-b border-line">
-        {/* Dot grid */}
+      <section className="relative overflow-hidden bg-bg border-b border-line min-h-[85vh] flex flex-col justify-center">
+        {/* Dot grid background */}
         <div
           className="absolute inset-0 pointer-events-none z-0"
           style={{
@@ -27,12 +32,12 @@ export function DivisionPage({ division, heroBackground }: DivisionPageProps) {
           }}
         />
 
-        {/* Custom hero background (glow/texture per division) */}
+        {/* Custom ambient hero glow/texture */}
         {heroBackground}
 
-        <div className="wr relative z-[2]">
+        <div className="wr relative z-[2] py-16 lg:py-24">
           {/* Breadcrumb */}
-          <div className="font-mono text-xs tracking-[0.14em] uppercase text-faint pt-24">
+          <div className="font-mono text-xs tracking-[0.14em] uppercase text-faint mb-8">
             <Link to="/" className="text-faint hover:text-acid transition-colors">
               Home
             </Link>{' '}
@@ -40,62 +45,70 @@ export function DivisionPage({ division, heroBackground }: DivisionPageProps) {
             <Link to="/" className="text-faint hover:text-acid transition-colors">
               Divisions
             </Link>{' '}
-            / <span className="text-txt">{division.name}</span>
+            / <span className="text-txt font-semibold">{division.name}</span>
           </div>
 
-          {/* Hero content */}
-          <div className="py-9 pb-21 max-w-[820px]">
-            {/* Badge icon */}
-            <div
-              className="inline-flex items-center justify-center w-[58px] h-[58px] rounded-xl mb-6"
-              style={{
-                background: `${division.accentColor}1f`,
-                color: division.accentColor,
-              }}
-            >
-              {division.icon}
-            </div>
-
-            {/* Eyebrow */}
-            <div
-              className="font-mono text-xs tracking-[0.16em] uppercase mb-4"
-              style={{ color: division.accentColor }}
-            >
-              {division.eyebrow}
-            </div>
-
-            {/* Title */}
-            <h1 className="font-display font-[800] text-[clamp(44px,5.8vw,88px)] leading-[0.96] tracking-[-0.03em] m-0 mb-6 max-w-[760px]">
-              {division.name}
-            </h1>
-
-            {/* Description */}
-            <p className="text-[18px] leading-[1.68] text-dim font-medium mb-8 max-w-[620px]">
-              {division.description}
-            </p>
-
-            {/* CTAs */}
-            <div className="flex gap-3 flex-wrap">
-              <a
-                href="#contact"
-                className="btn-acid"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+          {/* 2-Column Hero Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Left Column: Copy & Actions */}
+            <div className="lg:col-span-6">
+              {/* Badge Icon */}
+              <div
+                className="inline-flex items-center justify-center w-[58px] h-[58px] rounded-xl mb-6 shadow-sm border border-line"
+                style={{
+                  background: `${division.accentColor}1f`,
+                  color: division.accentColor,
                 }}
               >
-                Start a {division.name} project →
-              </a>
-              <a
-                href="#branches"
-                className="btn-line"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('branches')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                {division.icon}
+              </div>
+
+              {/* Eyebrow */}
+              <div
+                className="font-mono text-xs font-semibold tracking-[0.16em] uppercase mb-4"
+                style={{ color: division.accentColor }}
               >
-                Explore capabilities →
-              </a>
+                {division.eyebrow}
+              </div>
+
+              {/* Headline */}
+              <h1 className="font-display font-[800] text-[clamp(40px,5vw,76px)] leading-[0.98] tracking-[-0.03em] m-0 mb-6 text-txt">
+                {division.name}
+              </h1>
+
+              {/* Description */}
+              <p className="text-[18px] leading-[1.68] text-dim font-medium mb-8 max-w-[540px]">
+                {division.description}
+              </p>
+
+              {/* Action Buttons */}
+              <div className="flex gap-3 flex-wrap">
+                <a
+                  href="#contact"
+                  className="btn-acid"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  Start a {division.name} project →
+                </a>
+                <a
+                  href="#branches"
+                  className="btn-line"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('branches')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  Explore capabilities →
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column: Hero Visual Set-Piece */}
+            <div className="lg:col-span-6">
+              {heroVisual}
             </div>
           </div>
         </div>
@@ -109,7 +122,7 @@ export function DivisionPage({ division, heroBackground }: DivisionPageProps) {
             title={`Inside ${division.name}.`}
             lead={`Four focused capabilities that make up the ${division.name} division — engineered, delivered, and supported by one team.`}
           />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {division.subDivisions.map((sub, i) => (
               <BranchCard
                 key={sub.index}
@@ -129,9 +142,10 @@ export function DivisionPage({ division, heroBackground }: DivisionPageProps) {
           <SectionHeader
             eyebrow="How we engage"
             title="From brief to running system."
+            lead="Predictable 3-stage delivery model built for high-stakes software releases."
           />
           <ScrollReveal>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {engageSteps.map((step, i) => (
                 <EngageCard key={step.number} step={step} index={i} />
               ))}
